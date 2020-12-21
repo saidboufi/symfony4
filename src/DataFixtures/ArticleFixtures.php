@@ -21,7 +21,7 @@ class ArticleFixtures extends Fixture
 
             $faker = \Faker\Factory::create('fr_FR');
 
-            $category->setTitle($faker->sentence(mt_rand(4, 6)))
+            $category->setTitle($faker->sentence(mt_rand(2, 6)))
                      ->setDescription($faker->text())
                      ;
             $manager->persist($category);
