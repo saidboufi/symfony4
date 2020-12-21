@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <article>
+        <h2>{{ article.title }}</h2>
+        <div class="metadata">Ecrit le {{ article.createdAt | date('Y-m-d') }} à 19:30 dans la catégorie {{ article.category.title }}</div>
+        <div class="content">
+            <img src="{{ article.image }}" alt="">
+            <p>{{ article.content | raw }}</p>
+        </div>
+    </article>
+
+    <section id="comments">
+    
+    <h2> {{ article.comments | length }} Commentaires</h2>
+
+    {% for comment in article.comments|sort|reverse %}
+
+        <div class="comment">
+            <div class="row">
+                <div class="col-3">
+                {{ comment.author }} <small>{{ comment.createdAt | date ('Y-m-d à H:i') }}</small>
+                </div>
+                <div class="col">
+                {{ comment.content }}
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}    
+
+    </section>
+    
+    {% if app.user %}
+
+        <section class="add-comment">
+        
+            {{ form_start(formComment) }}
+            
+            {{ form_widget(formComment) }}
+            
+            {{ form_end(formComment) }}
+
+        </section>
+
+    {% else %}
+
+        <h3>Vous ne pouvez pas commenter!</h3>
+        <a href="{{ path('security_login') }}" class="btn btn-primary">Connectez vous!</a>
+        
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BlogController!{% endblock %}
+
+{# total items count #}
+{# <div class="count">
+    {{ pagination_article.getTotalItemCount }}
+</div> #}
+
+{% block body %}
+<section class="articles">
+
+    {% for article in pagination_article %}
+
+ <article>
+        <h2>{{ article.title }}</h2>
+        <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/y') }}</div>
+        <div class="content">
+            <img src="{{ article.image }}" alt="">
+            <div>{{ article.content | raw }}</div>
+            <a href="{{ path('show_article', {'id' : article.id}) }}" class="btn btn-primary">Lire la suite</a>
+        </div>
+</article>
+
+    {% endfor %}
+
+</section>
+
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination_article) }}
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Connexion</h1>
+
+    <form action="{{ path('security_login') }}" method="post">
+    
+        <div class="form-group">
+            <input type="text" name="_username"  class="form-control" required placeholder="Adresse e-mail" >
+        </div>
+
+        <div class="form-group">
+            <input type="password" name="_password"  class="form-control" required placeholder="Password...">
+        </div>
+        <div class="form-group">
+                <input type="checkbox" id="remember_me" name="_remember_me"/>
+            <label for="remember_me">Keep me logged in</label>
+
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" name="_target_path" value="{{ goTo }}"/>
+            <button type="submit" class="btn btn-success">Se loger</button>
+        </div>
+
+    </form>
+
+{% endblock %}

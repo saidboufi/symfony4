@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{# this tag only applies to the forms defined in this template #}
+
+{% form_theme registrationForm 'bootstrap_4_layout.html.twig' %}
+
+
+{% block body %}
+
+<h1>Inscription</h1>
+
+{{ form_start(registrationForm) }}
+
+    <div>
+
+    {{ form_row(registrationForm.username, {
+        'label' : "Votre nom d'utilisateur",
+          'attr' : {
+            'placeholder' : "Genre : nom.prenom"
+        }
+    }) }}
+
+    {{ form_row(registrationForm.email, {
+            'label' : "Votre adresse e-mail"
+        
+    }) }}
+
+     {{ form_row(registrationForm.password, {
+        'label' : "Votre nom de passe",
+        'attr' : {
+            'placeholder' : "Saisissez un mot de passe composé de A-Z et 0-9"
+        }
+    }) }}
+
+
+ {{ form_row(registrationForm.confirm_password, {
+        'label' : "Confirmer votre mot de passe",
+       
+    }) }}
+
+
+
+    </div>
+    
+    <button type="submit" class="btn btn-primary">S'inscrire</button>
+    <button type="reset" class="btn">Annuler</button>
+{{ form_end(registrationForm) }}
+
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formContact 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+{% for message in app.flashes('message') %}
+    <div class="alert alert-success" role="alert">
+    {{message}}
+    </div>
+{% endfor %}
+
+<h1>Contactez -nous</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt repellendus voluptatibus voluptates doloribus perferendis suscipit enim temporibus, saepe aliquid nostrum eaque ullam quibusdam nisi sit officia qui necessitatibus laborum sed.</p>
+   
+   {{ form_start(formContact) }}
+
+        {{ form_row(formContact.name, {"attr":{"placeholder":"Votre nom"}}) }}
+
+        {{ form_row(formContact.email, {"attr":{"placeholder":"Votre adresse e-mail"}}) }}
+
+        {{ form_row(formContact.tel, {"attr":{"placeholder":"Votre numéro de tel"}}) }}
+
+        {{ form_row(formContact.message, {"attr":{"placeholder":"Votre message"}}) }}
+
+            <button type="submit" class="btn btn-success">Envoyer</button>
+      
+   {{ form_end(formContact) }}
+
+{% endblock %}
